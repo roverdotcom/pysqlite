@@ -1,4 +1,4 @@
-#-*- coding: ISO-8859-1 -*-
+#-*- coding: iso-8859-1 -*-
 # setup.py: the distutils script
 #
 # Copyright (C) 2004-2015 Gerhard Häring <gh@ghaering.de>
@@ -126,12 +126,12 @@ class MyBuildExt(build_ext):
         return output
 
     def _pkgconfig_include_dirs(self, package):
-        return [x.strip() for x in 
+        return [x.strip() for x in
                 self._pkgconfig("--cflags-only-I",
                                 package).replace("-I", " ").split()]
 
     def _pkgconfig_library_dirs(self, package):
-        return [x.strip() for x in 
+        return [x.strip() for x in
                 self._pkgconfig("--libs-only-L",
                                 package).replace("-L", " ").split()]
 
@@ -229,6 +229,7 @@ def get_setup_args():
         "test": TestRunner,
         "build_ext": MyBuildExt,
         "build_static": AmalgamationBuilder,
+        "build": AmalgamationBuilder,
         "cross_bdist_wininst": cross_bdist_wininst.bdist_wininst
     })
     return setup_args
